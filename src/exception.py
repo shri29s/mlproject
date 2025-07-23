@@ -11,7 +11,8 @@ def error_message_detail(error_message):
     return error_message
 
 class CustomException(Exception):
-    def __init__(self, error_message):
+    def __init__(self, location, e):
+        error_message = f"Error: [{location, str(e)}]"
         super().__init__(error_message)
         self.error_message = error_message_detail(error_message)
         logging.error(self.error_message)

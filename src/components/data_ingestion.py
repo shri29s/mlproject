@@ -18,7 +18,11 @@ class DataIngestion:
     def __init__(self):
         self.config = DataIngestionConfig()
     
-    def initiate_data_ingestion(self):
+    def data_ingestion(self):
+        """
+        Reads the csv file and do train test split.
+        Returns: df_train, df_test
+        """
         try:
             logging.info("Data ingestion started")
             df = pd.read_csv(r"notebooks/data/stud.csv")
@@ -32,10 +36,18 @@ class DataIngestion:
             df_train.to_csv(self.config.train_data_path, index=False, header=True)
             df_test.to_csv(self.config.test_data_path, index=False, header=True)
             logging.info(f"Data stored in [{os.path.dirname(self.config.train_data_path)}] directory")
+
+            return df_train, df_test
+        
         except Exception as e:
             raise CustomException("Error in data ingestion stage: " + str(e))
 
 
-# if __name__=="__main__":
-#     data_ingestion = DataIngestion()
-#     data_ingestion.initiate_data_ingestion()
+from src.components.data_transformation import DataTransformer
+
+if __name__=="__main__":
+    data_ingestion = DataIngestion()
+    df_train, df_test = data_ingestion.data_ingestion()
+
+    data_transformer = DataTransformer()
+    X_train, X_test, y_train, y_test = data_transformer.transform(df_train, df_test)
