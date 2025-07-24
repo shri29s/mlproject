@@ -77,7 +77,7 @@ temp/
 *.pid.lock
 
 # custom files
-artifacts/
+# artifacts/
 src/__pycache__/
 src/components/__pycache__/
 src/pipelines/__pycache__/
