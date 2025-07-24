@@ -18,18 +18,18 @@
         <div class="form-input">
           <label for="gender">Gender</label>
           <select name="gender" id="gender" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="male" {% if data.gender =="male" %} selected {% endif %}>Male</option>
+            <option value="female" {% if data.gender =="female" %} selected {% endif %}>Female</option>
           </select>
         </div>
         <div class="form-input mb-4">
           <label for="race_ethnicity">Race Ethnicity</label>
           <select name="race_ethnicity" id="race_ethnicity" required>
-            <option value="group A">Group A</option>
-            <option value="group B">Group B</option>
-            <option value="group C">Group C</option>
-            <option value="group D">Group D</option>
-            <option value="group E">Group E</option>
+            <option value="group A" {% if data.race_ethnicity == "group A" %} selected {% endif %}>Group A</option>
+            <option value="group B" {% if data.race_ethnicity == "group B" %} selected {% endif %}>Group B</option>
+            <option value="group C" {% if data.race_ethnicity == "group C" %} selected {% endif %}>Group C</option>
+            <option value="group D" {% if data.race_ethnicity == "group D" %} selected {% endif %}>Group D</option>
+            <option value="group E" {% if data.race_ethnicity == "group E" %} selected {% endif %}>Group E</option>
           </select>
         </div>
         <div class="form-input">
@@ -41,19 +41,19 @@
             id="parental_level_of_education"
             required
           >
-            <option value="some high school">Some High School</option>
-            <option value="high school">High School</option>
-            <option value="some college">Some College</option>
-            <option value="associate's degree">Associate's Degree</option>
-            <option value="bachelor's degree">Bachelor's Degree</option>
-            <option value="master's degree">Master's Degree</option>
+            <option value="some high school" {% if data.parental_level_of_education == "some high school" %} selected {% endif %}>Some High School</option>
+            <option value="high school" {% if data.parental_level_of_education == "high school" %} selected {% endif %}>High School</option>
+            <option value="some college" {% if data.parental_level_of_education == "some college" %} selected {% endif %}>Some College</option>
+            <option value="associate's degree" {% if data.parental_level_of_education == "associate's degree" %} selected {% endif %}>Associate's Degree</option>
+            <option value="bachelor's degree" {% if data.parental_level_of_education == "bachelor's degree" %} selected {% endif %}>Bachelor's Degree</option>
+            <option value="master's degree" {% if data.parental_level_of_education == "master's degree" %} selected {% endif %}>Master's Degree</option>
           </select>
         </div>
         <div class="form-input">
           <label for="lunch">Lunch</label>
           <select name="lunch" id="lunch" required>
-            <option value="standard">Standard</option>
-            <option value="free/reduced">Free/Reduced</option>
+            <option value="standard" {% if data.lunch == "standard" %} selected {% endif %}>Standard</option>
+            <option value="free/reduced" {% if data.lunch == "free/reduced" %} selected {% endif %}>Free/Reduced</option>
           </select>
         </div>
         <div class="form-input">
@@ -63,8 +63,8 @@
             id="test_preparation_course"
             required
           >
-            <option value="none">None</option>
-            <option value="completed">Completed</option>
+            <option value="none" {% if data.test_preparation_course == "none" %} selected {% endif %}>None</option>
+            <option value="completed" {% if data.test_preparation_course == "completed" %} selected {% endif %}>Completed</option>
           </select>
         </div>
         <div class="form-input">
@@ -77,6 +77,7 @@
             max="100"
             step="0.25"
             required
+            {% if data.reading_score %} value="{{ data.reading_score }}" {% endif %}
           />
         </div>
         <div class="form-input">
@@ -89,6 +90,7 @@
             max="100"
             step="0.25"
             required
+            {% if data.writing_score %} value="{{ data.writing_score }}" {% endif %}
           />
         </div>
         <button type="submit">Predict</button>

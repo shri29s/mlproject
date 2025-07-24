@@ -17,9 +17,9 @@ def predict():
         )
 
         prediction = PredictionPipeline.predict(data)
-        return render_template("index.html", prediction=prediction)
+        return render_template("index.html", prediction=prediction, data=data)
     else:
         return render_template("index.html")
 
 if __name__=="__main__":
-    app.run("0.0.0.0", port=5000, debug=True)
+    app.run("0.0.0.0")
