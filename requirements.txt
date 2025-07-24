@@ -11,4 +11,5 @@ scikit-learn
 xgboost
 
 flask
+gunicorn
 -e .
