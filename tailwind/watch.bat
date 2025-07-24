@@ -1,0 +1,3 @@
+@echo off
+echo Starting Tailwind CSS watch mode...
+npx tailwindcss -i input.css -o ../static/css/main.css --watch

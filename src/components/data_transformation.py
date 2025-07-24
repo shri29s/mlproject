@@ -15,7 +15,7 @@ from src import utils
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_path: str = os.path.join("artifacts", "preprocesser.pkl")
+    preprocessor_path: str = os.path.join("artifacts", "preprocessor.pkl")
     target_column: str = "math_score"
 
 
@@ -48,7 +48,6 @@ class DataTransformer:
                 ("categorical", categorical_pipeline, categorical_columns)
             ])
 
-            utils.save_object(preprocessor, self.config.preprocessor_path)
             return preprocessor
         except Exception as e:
             raise CustomException(location="preprocesser", e=e)
@@ -74,6 +73,7 @@ class DataTransformer:
             X_train_transformed = preprocessor.fit_transform(X_train)
             X_test_transformed = preprocessor.transform(X_test)
 
+            utils.save_object(preprocessor, self.config.preprocessor_path)
             return X_train_transformed, X_test_transformed, y_train, y_test
         
         except Exception as e:

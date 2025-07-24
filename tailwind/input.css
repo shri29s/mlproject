@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-input {
+    @apply mb-4 flex flex-col;
+  }
+
+  .form-input label {
+    @apply block font-medium text-gray-100 mb-2;
+  }
+
+  .form-input select,
+  .form-input input {
+    @apply block w-full bg-gray-800 border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-100 p-3 transition-colors duration-200;
+  }
+
+  .form-input select {
+    @apply appearance-none cursor-pointer bg-gray-800;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  .form-input select:hover {
+    @apply border-gray-500 bg-gray-700;
+  }
+
+  .form-input select:focus {
+    @apply outline-none ring-2 ring-blue-500 border-blue-500;
+  }
+
+  .form-input input:hover {
+    @apply border-gray-500 bg-gray-700;
+  }
+
+  .form-input input:focus {
+    @apply outline-none;
+  }
+
+  /* Style the submit button */
+  button[type="submit"] {
+    @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition-colors duration-200 mt-6;
+  }
+
+  button[type="submit"]:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-gray-900;
+  }
+
+  /* Style the prediction result */
+  .prediction-result {
+    @apply mt-8 p-6 bg-green-900 border border-green-700 rounded-md text-center;
+  }
+
+  .prediction-result h2 {
+    @apply text-2xl font-bold text-green-100;
+  }
+}

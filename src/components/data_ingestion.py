@@ -41,17 +41,3 @@ class DataIngestion:
         
         except Exception as e:
             raise CustomException("Error in data ingestion stage: " + str(e))
-
-
-from src.components.data_transformation import DataTransformer
-from src.components.model_trainer import ModelTrainer
-
-if __name__=="__main__":
-    data_ingestion = DataIngestion()
-    df_train, df_test = data_ingestion.data_ingestion()
-
-    data_transformer = DataTransformer()
-    X_train, X_test, y_train, y_test = data_transformer.transform(df_train, df_test)
-
-    trainer = ModelTrainer()
-    _, path, r2 = trainer.train_models(X_train, X_test, y_train, y_test)

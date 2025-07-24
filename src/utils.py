@@ -24,6 +24,15 @@ def save_object(obj, path):
     except Exception as e:
         raise CustomException(location="save object", e=e)
     
+def load_object(path):
+    try:
+        with open(path, "rb") as file:
+            obj = dill.load(file=file)
+        logging.info(f"Loaded object from [{path}]")
+        return obj
+    except Exception as e:
+        raise CustomException(location="load object", e=e)
+    
 def evaluate_model(X_train, X_test, y_train, y_test, model_tuple):
     try:
         logging.info(f"Evaluating model: [{model_tuple[0]}]")
