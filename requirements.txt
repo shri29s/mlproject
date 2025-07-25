@@ -11,5 +11,5 @@ scikit-learn
 xgboost
 
 flask
-gunicorn
+waitress
 -e .
